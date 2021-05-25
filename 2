@@ -1,0 +1,8 @@
+select e2.emp_id as "Manager_Id",
+          e2.emp_name as "Manager", 
+          avg(a.salary) as "Average_Salary_Under_Manager"
+from Employee e1, 
+     Employee e2
+where e1.manager_id = e2.emp_id
+group by e2.emp_id, e2.emp_name
+order by e2.emp_id;
