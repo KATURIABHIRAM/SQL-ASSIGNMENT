@@ -1,0 +1,15 @@
+SELECT
+    CONCAT(employees.first_name, ' ', employees.last_name) AS 'EmployeeName',
+    salaries.emp_no AS 'Employee Number',
+    departments.dept_no AS 'Department Number',
+    departments.dept_name AS 'Department name',
+    AVG(salaries.salary) AS 'Average salary'
+FROM salaries
+INNER JOIN dept_emp
+    ON salaries.emp_no = dept_emp.emp_no
+INNER JOIN employees
+    ON salaries.emp_no = employees.emp_no
+INNER JOIN departments
+    ON dept_emp.dept_no = departments.dept_no
+GROUP BY    salaries.emp_no,
+            dept_emp.dept_no
