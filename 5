@@ -1,0 +1,17 @@
+SELECT
+    e.empno,
+    e.ename,
+    e1.empcnt
+FROM
+    emp e,
+    (
+        SELECT
+            mgr,
+            COUNT(*) empcnt
+        FROM
+            emp
+        GROUP BY
+            mgr
+    ) e1
+WHERE
+    e.empno = e1.mgr;
