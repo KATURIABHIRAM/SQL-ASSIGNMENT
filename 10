@@ -1,0 +1,6 @@
+SELECT *
+FROM table_name
+WHERE LENGTH(col_name) = (
+	SELECT MAX(LENGTH(col_name))
+	FROM table_name)
+LIMIT 1;
